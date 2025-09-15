@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Architect's Dossier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-iecdLp3iIqG6P8HhC92O1jQ8/4u6P74hK1Z1z0s2V9J3v3H79z/F8r4w8E8G/X9b6I1LzV7H3z7tC/B0s6pA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f0f1a;
+            color: #E0E0E0;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+        }
+        .text-accent {
+            color: #00f0ff;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease-in-out;
+            position: relative; /* Added for pseudo-element positioning */
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn-glass {
+            background-color: #00f0ff;
+            color: #121212;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+        .btn-glass:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #00f0ff, 0 0 30px #00f0ff;
+        }
+        .btn-inactive-glass {
+            background-color: #4b5563;
+            color: #d1d5db;
+            font-weight: 700;
+            border-radius: 8px;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            cursor: not-allowed;
+        }
+        .project-tag {
+            background: rgba(0, 240, 255, 0.2);
+            color: #00f0ff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Space Mono', monospace;
+        }
+        .contact-icon {
+            color: #00f0ff;
+            transition: transform 0.3s ease;
+        }
+        .contact-icon:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 p-4 bg-gray-900 bg-opacity-70 backdrop-blur-sm">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-xl font-bold text-accent">The Architect</a>
+            <div class="space-x-4 hidden md:flex">
+                <a href="#about" class="hover:text-accent">About</a>
+                <a href="#skills" class="hover:text-accent">Skills</a>
+                <a href="#certifications" class="hover:text-accent">Certifications</a>
+                <a href="#projects" class="hover:text-accent">Projects</a>
+                <a href="#ai-assistant" class="hover:text-accent">Assistant</a>
+                <a href="#contact" class="hover:text-accent">Contact</a>
+                <a href="https://capeitinitiative-my.sharepoint.com/:b:/g/personal/adivhaho_ndou_capaciti_org_za/EUe_TBskN8FLpnNn-nLqdLEBR4w81nAlTipDrdASgAluUg" class="hover:text-accent" target="_blank">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative z-10 px-4 pt-24 md:pt-0">
+        <div class="container mx-auto flex flex-col items-center justify-center text-center">
+            <img src="https://i.imgur.com/VtLib3V.png" alt="A professional headshot" class="rounded-lg w-48 h-48 md:w-64 md:h-64 shadow-2xl mb-8">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                Hello, I'm <span class="text-accent">Adivhaho Ndou</span>.
+            </h1>
+            <p class="text-lg md:text-2xl mt-4 text-gray-400">
+                An AI Project Builder & aspiring Prompt Engineer.
+                <br>I build intelligent systems and innovative solutions.
+            </p>
+        </div>
+        <canvas id="hero-bg" class="absolute inset-0 w-full h-full z-0"></canvas>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-6">About Me</h2>
+            <div class="glass-card p-8 rounded-xl max-w-6xl mx-auto">
+                <p class="text-base md:text-lg leading-relaxed text-gray-300">
+                    I’m a detail-oriented IT graduate with a diploma in Information Technology from Damelin, backed by hands-on experience as an IT technician and intern at Lenasia South Library. I recently completed an intensive AI/ML bootcamp, where I specialized in building and deploying intelligent systems—with a strong focus on prompt engineering and large language models. I’m passionate about designing intuitive, AI-driven solutions and thrive on transforming complex challenges into elegant, functional applications. Proficient in modern frameworks, data analysis, and cloud technologies, I’m eager to contribute my technical skills and innovative mindset to a forward-thinking organization or project.
+                </p>
+                <div class="mt-8">
+                    <h3 class="text-2xl font-bold mb-4">Core Directives</h3>
+                    <ul class="list-disc list-inside space-y-2 max-w-xl mx-auto md:mx-0">
+                        <li>Design and deploy intelligent AI systems that address real-world challenges with practical, scalable solutions.</li>
+                        <li>Enhance human-AI interaction through advanced prompt engineering and intuitive model behavior.</li>
+                        <li>Drive innovation in AI/ML projects, contributing to meaningful outcomes across industries.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Technical Skills and Competencies</h2>
+            <div class="glass-card p-8 rounded-xl max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Core AI/ML</h3>
+                        <div class="space-y-4">
+                            <div class="glass-card p-4 rounded-lg">
+                                <h4 class="font-bold text-lg mb-1">AI & Machine Learning</h4>
+                                <p class="text-sm text-gray-400">PyTorch, TensorFlow, Scikit-learn, Keras, Hugging Face</p>
+                            </div>
+                            <div class="glass-card p-4 rounded-lg">
+                                <h4 class="font-bold text-lg mb-1">Prompt Engineering</h4>
+                                <p class="text-sm text-gray-400">Zero-shot, few-shot, Chain-of-Thought, fine-tuning, RAG</p>
+                            </div>
+                            <div class="glass-card p-4 rounded-lg">
+                                <h4 class="font-bold text-lg mb-1">Natural Language Processing</h4>
+                                <p class="text-sm text-gray-400">NLP, NLTK, spaCy, Transformers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-accent">Development & Operations</h3>
+                        <div class="space-y-4">
+                            <div class="glass-card p-4 rounded-lg">
+                                <h4 class="font-bold text-lg mb-1">Programming Languages</h4>
+                                <p class="text-sm text-gray-400">Python, JavaScript, C#, Java</p>
+                            </div>
+                            <div class="glass-card p-4 rounded-lg">
+                                <h4 class="font-bold text-lg mb-1">Cloud Platforms</h4>
+                                <p class="text-sm text-gray-400">AWS (S3, EC2), Google Cloud Platform (Vertex AI, BigQuery)</p>
+                            </div>
+                            <div class="glass-card p-4 rounded-lg">
+                                <h4 class="font-bold text-lg mb-1">Version Control & Tools</h4>
+                                <p class="text-sm text-gray-400">Git, GitHub, GitLab, Netbeans, Visual Studio, Notepad++, VS Code</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Certifications & Badges</h2>
+            <div class="glass-card p-8 rounded-xl flex flex-col space-y-4 max-w-6xl mx-auto">
+                <!-- Certifications List -->
+                <div class="flex justify-between items-center pb-2 border-b border-gray-700">
+                    <span class="text-lg">Artificial Intelligence (AI) Bootcamp</span>
+                    <a href="https://capeitinitiative-my.sharepoint.com/:i:/g/personal/adivhaho_ndou_capaciti_org_za/ETmfFzDmeyRJvyu-Plje-HIBmyaLsUoCTBpzYp7dO7W4XA?e=s5IVzy" class="btn-glass px-4 py-2 text-sm" target="_blank">View</a>
+                </div>
+                <div class="flex justify-between items-center pb-2 border-b border-gray-700">
+                    <span class="text-lg">AI Foundation</span>
+                    <a href="https://capeitinitiative-my.sharepoint.com/:b:/g/personal/adivhaho_ndou_capaciti_org_za/EWJPsYfP64lLiwCEfjuEbYsBTcjGImOTv4jDu79ATA002w?e=ggSX4m" class="btn-glass px-4 py-2 text-sm" target="_blank">View</a>
+                </div>
+                <div class="flex justify-between items-center pb-2 border-b border-gray-700">
+                    <span class="text-lg">Prompt Engineering with Chat GPT</span>
+                    <a href="https://capeitinitiative-my.sharepoint.com/:b:/g/personal/adivhaho_ndou_capaciti_org_za/EWJPsYfP64lLiwCEfjuEbYsBTcjGImOTv4jDu79ATA002w?e=hSg9Yt" class="btn-glass px-4 py-2 text-sm" target="_blank">View</a>
+                </div>
+                <div class="flex justify-between items-center pb-2 border-b border-gray-700">
+                    <span class="text-lg">AI for Everyone</span>
+                    <a href="https://capeitinitiative-my.sharepoint.com/:b:/g/personal/adivhaho_ndou_capaciti_org_za/EV3NFX7T3DVNrd65cBzpCN0B8nsli1HAXgp3DM36oprCzQ?e=7uuCH8" class="btn-glass px-4 py-2 text-sm" target="_blank">View</a>
+                </div>
+                <div class="flex justify-between items-center pb-2 border-b border-gray-700">
+                    <span class="text-lg">Introduction to Artificial Intelligence</span>
+                    <a href="https://capeitinitiative-my.sharepoint.com/:b:/g/personal/adivhaho_ndou_capaciti_org_za/EUCaf50bW8pHmyzVvYVwF0IBeF8afMxkM0FYgktqHKVwHg?e=W9ZfUa" class="btn-glass px-4 py-2 text-sm" target="_blank">View</a>
+                </div>
+                <div class="flex justify-between items-center pb-2 border-b border-gray-700">
+                    <span class="text-lg">Introduction to Generative AI</span>
+                    <a href="https://capeitinitiative-my.sharepoint.com/:b:/g/personal/adivhaho_ndou_capaciti_org_za/EWZSk0TlGThNrGdh6-FgG6sB4QYjaTqHPmENlm6Gj5U7JQ?e=GSniNy" class="btn-glass px-4 py-2 text-sm" target="_blank">View</a>
+                </div>
+                <div class="flex justify-between items-center pb-2 border-b border-gray-700">
+                    <span class="text-lg">AI Essentials</span>
+                    <a href="https://capeitinitiative-my.sharepoint.com/:b:/g/personal/adivhaho_ndou_capaciti_org_za/EbhIBd69EytHhm_Mckary5QB9oICgB3v__sQobTVorLa0w?e=PeVE25" class="btn-glass px-4 py-2 text-sm" target="_blank">View</a>
+                </div>
+                <div class="flex justify-between items-center pb-2 border-b border-gray-700">
+                    <span class="text-lg">Python for Data Science</span>
+                    <a href="https://capeitinitiative-my.sharepoint.com/:b:/g/personal/adivhaho_ndou_capaciti_org_za/EQqZWQvtvY1MkBdQoRjiGKABgy2a3_TqsAF_cSMv-M82Tw?e=kxeWez" class="btn-glass px-4 py-2 text-sm" target="_blank">View</a>
+                </div>
+                <div class="flex justify-between items-center pb-2 border-b border-gray-700">
+                    <span class="text-lg">AI on Microsoft Azure</span>
+                    <a href="https://capeitinitiative-my.sharepoint.com/:b:/g/personal/adivhaho_ndou_capaciti_org_za/EawYQ3t7_GBNvfKehon0jdkBc8v-2tio3yGncPl1wmeGuQ?e=xhuMI1" class="btn-glass px-4 py-2 text-sm" target="_blank">View</a>
+                </div>
+                <div class="flex justify-between items-center pb-2 border-b border-gray-700">
+                    <span class="text-lg">Building AI Powered Chatbots without Programming</span>
+                    <a href="https://capeitinitiative-my.sharepoint.com/:b:/g/personal/adivhaho_ndou_capaciti_org_za/EZM8pT5c9SpEjoPWQoob5Q0BtohsnIyn7kudVZyPWjoxrg?e=dqu12X" class="btn-glass px-4 py-2 text-sm" target="_blank">View</a>
+                </div>
+                <div class="flex justify-between items-center pb-2 border-b border-gray-700">
+                    <span class="text-lg">Generative AI with Large Language Models</span>
+                    <a href="https://capeitinitiative-my.sharepoint.com/:b:/g/personal/adivhaho_ndou_capaciti_org_za/Ec26tISOC99Osg13QzBKaCIB0mcFZxQKLbDNaJe6M5VAtw?e=uVS9un" class="btn-glass px-4 py-2 text-sm" target="_blank">View</a>
+                </div>
+                <div class="flex justify-between items-center pb-2 border-b border-gray-700">
+                    <span class="text-lg">Introduction to Responsible AI</span>
+                    <a href="https://capeitinitiative-my.sharepoint.com/:b:/g/personal/adivhaho_ndou_capaciti_org_za/ET4H3OydzG5EoSj1hV_laiQBc_ReJd1MtYGUCBGp2lY0ww?e=eLJ6MY" class="btn-glass px-4 py-2 text-sm" target="_blank">View</a>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-lg">Trustworthy AI Managing Bias, Ethics and Accountability</span>
+                    <a href="https://capeitinitiative-my.sharepoint.com/:b:/g/personal/adivhaho_ndou_capaciti_org_za/ERjl97bPNfpCnzcCGqiHCdwB-wbCdhQdidFZIe0huNv41g?e=2f38Zf" class="btn-glass px-4 py-2 text-sm" target="_blank">View</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16">
+        <div class="container mx-auto px-4 lg:px-12">
+            <h2 class="text-4xl font-bold text-center mb-12">Project Archive</h2>
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="glass-card p-6 rounded-lg flex flex-col text-left">
+                    <img src="https://i.imgur.com/GXB9Akf.png" alt="Screenshot of the Smartwater SA Project" class="rounded-t-lg w-full h-48 object-contain -mt-6 -mx-6 mb-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-bold">Smartwater SA</h3>
+                        <span class="project-tag">Scalable</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-2">
+                        <b class="text-base">Objective:</b> A smart irrigation system that uses AI to save water.
+                    </p>
+                    <p class="text-sm text-gray-400 mb-2">
+                        <b class="text-base">Results:</b> 45% water saving.
+                    </p>
+                    <p class="text-sm text-gray-400 mb-4">
+                        <b class="text-base">Key Features:</b> Mobile connectivity, Realtime smart irrigation calendar, forecast.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="project-tag">Weather API</span>
+                        <span class="project-tag">Surprise</span>
+                        <span class="project-tag">FastAPI</span>
+                    </div>
+                    <div class="flex justify-start items-center space-x-4 mt-auto">
+                        <a href="https://start-pastel-91876766.figma.site" class="btn-glass text-xs md:text-sm px-3 md:px-4 py-2" target="_blank">View Demo</a>
+                        <a href="https://capeitinitiative-my.sharepoint.com/:b:/g/personal/nompilo_mchunu_capaciti_org_za/EQxi0v6sl6BMhEp5BRCpDOUBm9gOo4V8Pj4Sl8XlojiYPQ?e=hmWbXo" class="btn-glass text-xs md:text-sm px-3 md:px-4 py-2" target="_blank">Docs</a>
+                        <a href="https://capeitinitiative-my.sharepoint.com/:v:/g/personal/nompilo_mchunu_capaciti_org_za/EflDHNdxG3pFpXbcGy5HNsUBF1m3waGavsOKiOYIAvEHUA?e=xdYBMk" class="btn-glass text-xs md:text-sm px-3 md:px-4 py-2" target="_blank">Video</a>
+                         <a href="https://github.com/Masikhule-Solutions/Smart-Water-SA" class="btn-glass text-xs md:text-sm px-3 md:px-4 py-2" target="_blank">Repo</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="glass-card p-6 rounded-lg flex flex-col text-left">
+                    <img src="https://i.imgur.com/8fbPfEh.png" alt="Screenshot of the MLOps Pipeline Project" class="rounded-t-lg w-full h-48 object-cover -mt-6 -mx-6 mb-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-bold">Cosmic Quill</h3>
+                        <span class="project-tag">DevOps</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-2">
+                        <b class="text-base">Objective:</b> AI creative writing content generator tool
+                    </p>
+                    <p class="text-sm text-gray-400 mb-2">
+                        <b class="text-base">Results:</b> 99.9% uptime, automated workflows
+                    </p>
+                    <p class="text-sm text-gray-400 mb-4">
+                        <b class="text-base">Key Features:</b> multi format creation, smart audio features, Dynamic themes, AI tone adjuster
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="project-tag">Docker</span>
+                        <span class="project-tag">Kubernetes</span>
+                        <span class="project-tag">MLFlow</span>
+                        <span class="project-tag">AWS</span>
+                    </div>
+                    <div class="flex justify-start items-center space-x-4 mt-auto">
+                        <a href="https://apron-swarm-24108016.figma.site" class="btn-glass text-xs md:text-sm px-3 md:px-4 py-2" target="_blank">View Demo</a>
+                        <a href="https://capeitinitiative-my.sharepoint.com/:f:/g/personal/nompilo_mchunu_capaciti_org_za/Eh4gTye80UBIq9DEfNSNb78B3Ya1dZtzPbmjwqnfsYIkOg?e=s6okda" class="btn-glass text-xs md:text-sm px-3 md:px-4 py-2" target="_blank">Docs</a>
+                    </div>
+                </div>
+                 <!-- Project 3 -->
+                <div class="glass-card p-6 rounded-lg flex flex-col text-left">
+                    <img src="https://i.imgur.com/Jgn0VfE.png" alt="Screenshot of AI Resume Builder Project" class="rounded-t-lg w-full h-48 object-contain -mt-6 -mx-6 mb-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-bold">AI Resume Builder</h3>
+                        <span class="project-tag">AI</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-2">
+                        <b class="text-base">Objective:</b> building ATS compliant resume with AI assistant personalize resume based on job description.
+                    </p>
+                     <p class="text-sm text-gray-400 mb-2">
+                        <b class="text-base">Results:</b> 100% ATS compliant resume
+                    </p>
+                    <p class="text-sm text-gray-400 mb-4">
+                        <b class="text-base">Key Features:</b> build resume, career toolkit, job match and analyze resume.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">Gemini API</span>
+                        <span class="project-tag">Tailwind CSS</span>
+                    </div>
+                    <div class="flex justify-start items-center space-x-4 mt-auto">
+                        <a href="https://masikhule-solutions.github.io/ai-resume-builder/" class="btn-glass text-xs md:text-sm px-3 md:px-4 py-2" target="_blank">View Demo</a>
+                        <a href="https://capeitinitiative-my.sharepoint.com/:f:/g/personal/nompilo_mchunu_capaciti_org_za/Eii2JaVwU7ZGk2Hj3C4IMe8B9WfzJxBxvNYpXoRgQLvRXQ?e=qXLTcD" class="btn-glass text-xs md:text-sm px-3 md:px-4 py-2" target="_blank">Docs</a>
+                        <a href="https://github.com/Mphefemulo/Masikhule.git" class="btn-glass text-xs md:text-sm px-3 md:px-4 py-2" target="_blank">Repo</a>
+                    </div>
+                </div>
+                 <!-- Project 4 -->
+                <div class="glass-card p-6 rounded-lg flex flex-col text-left">
+                    <img src="https://i.imgur.com/ZFPCLmH.png" alt="Screenshot of the AI Study Buddy Project" class="rounded-t-lg w-full h-48 object-contain -mt-6 -mx-6 mb-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-bold">AI Study Buddy</h3>
+                        <span class="project-tag">Automation</span>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-2">
+                        <b class="text-base">Objective:</b> Rag chatbot that is here to make studying simple
+                    </p>
+                     <p class="text-sm text-gray-400 mb-2">
+                        <b class="text-base">Results:</b> 90% success rate
+                    </p>
+                    <p class="text-sm text-gray-400 mb-4">
+                        <b class="text-base">Key Features:</b> flash card creator, Quiz creator, image creator, voice input notes analyzer and study plan creator.
+                    </p>
+                    <div class="flex justify-start items-center space-x-4 mt-auto">
+                        <a href="https://ai-study-buddy-701021958461.us-west1.run.app/" class="btn-glass text-xs md:text-sm px-3 md:px-4 py-2" target="_blank">View Demo</a>
+                        <a href="https://capeitinitiative-my.sharepoint.com/:f:/g/personal/nompilo_mchunu_capaciti_org_za/EtKXEm7csw5IjWshbe7PBOkBxXaRrLbb4kRAzE_v7Vz8uA?e=gOYsBs" class="btn-glass text-xs md:text-sm px-3 md:px-4 py-2" target="_blank">Docs</a>
+                        <a href="https://github.com/Masikhule-Solutions/ai-study-buddy" class="btn-glass text-xs md:text-sm px-3 md:px-4 py-2" target="_blank">Repo</a>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="glass-card p-6 rounded-lg flex flex-col text-left">
+                    <img src="https://i.imgur.com/xFJs84j.png" alt="Thumbnail for Sentiment Analysis" class="rounded-t-lg w-full h-48 object-cover -mt-6 -mx-6 mb-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-bold">Sentiment Analysis</h3>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-2">
+                        <b class="text-base">Objective:</b> provide an Understanding of emotional tone in your text data instantly.
+                    </p>
+                     <p class="text-sm text-gray-400 mb-2">
+                        <b class="text-base">Results:</b> analysis report.
+                    </p>
+                    <p class="text-sm text-gray-400 mb-4">
+                        <b class="text-base">Key Features:</b> export results, text comparison, automated summary, deeper insight, thematic analysis and actionable suggestions.
+                    </p>
+                    <div class="flex justify-start items-center space-x-4 mt-auto">
+                        <a href="https://skelletor147.github.io/sentimental-analysis/" class="btn-glass text-xs md:text-sm px-3 md:px-4 py-2" target="_blank">View Demo</a>
+                        <a href="https://capeitinitiative-my.sharepoint.com/:f:/g/personal/nompilo_mchunu_capaciti_org_za/ErFk8vqx7a1NpGgJa5UgfvoBzjU42mUIQ8mLyXMENIjxLQ?e=rQChdb" class="btn-glass text-xs md:text-sm px-3 md:px-4 py-2" target="_blank">Docs</a>
+                        <a href="https://github.com/skelletor147/sentimental-analysis-dashboard" class="btn-glass text-xs md:text-sm px-3 md:px-4 py-2" target="_blank">Repo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Portfolio Assistant Section -->
+    <section id="ai-assistant" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 mr-Robot" style="font-family: 'Space Mono', monospace; color: #00f0ff;">_fsociety-AI</h2>
+            <div class="glass-card p-6 rounded-xl max-w-lg mx-auto flex flex-col h-[500px] relative">
+                <!-- Background Image -->
+                <div class="absolute inset-0 z-0">
+                    <img src="https://ogimg.infoglobo.com.br/in/19704743-5f1-a79/FT1086A/NUP_173272_1422.JPG" alt="Elliot Alderson from Mr. Robot" class="w-full h-full object-cover rounded-xl" style="opacity: 0.1;">
+                </div>
+                <!-- Chat Window -->
+                <div id="chat-window" class="flex-grow overflow-y-auto space-y-4 p-4 rounded-lg mb-4 relative z-10">
+                    <div class="flex justify-start">
+                        <div class="bg-gray-700 text-gray-200 p-3 rounded-xl rounded-bl-none max-w-[80%]">Hello, friend. Let's see if you're worth the bandwidth. Ask a question about the man behind the code, the projects, the man behind the machine. But keep it real. I don't have time for small talk.</div>
+                    </div>
+                </div>
+                <!-- User Input -->
+                <div class="flex items-center space-x-4 relative z-10">
+                    <input type="text" id="user-input" placeholder="Ask a question about my portfolio..." class="flex-grow p-3 rounded-lg bg-gray-700 text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent transition-all">
+                    <button id="send-btn" class="btn-glass p-3 rounded-lg"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12">Interface Connection</h2>
+            <div class="glass-card p-8 rounded-xl flex flex-col items-center max-w-6xl mx-auto text-center">
+                <h3 class="text-3xl font-bold mb-4">Let's Connect and Build Together.</h3>
+                <p class="text-gray-300 text-lg mb-8">
+                    I'm actively seeking opportunities and would love to discuss how my skills can contribute to your team.
+                </p>
+                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 items-center justify-center">
+                    <a href="mailto:adivhahondou@outlook.com" class="flex items-center hover:underline">
+                        <i class="fa-solid fa-envelope mr-2 text-accent contact-icon"></i>
+                        <span class="text-lg">adivhahondou@outlook.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/adivhaho-ndou-472277213/" class="flex items-center hover:underline" target="_blank">
+                        <i class="fa-brands fa-linkedin mr-2 text-accent contact-icon"></i>
+                        <span class="text-lg">LinkedIn</span>
+                    </a>
+                    <a href="https://github.com/skelletor147" class="flex items-center hover:underline" target="_blank">
+                        <i class="fa-brands fa-github mr-2 text-accent contact-icon"></i>
+                        <span class="text-lg">GitHub</span>
+                    </a>
+                    <a href="tel:+27743724964" class="flex items-center hover:underline">
+                        <i class="fa-solid fa-phone mr-2 text-accent contact-icon"></i>
+                        <span class="text-lg">074 372 4964</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+<script>
+    const canvas = document.getElementById('hero-bg');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+
+    function resizeCanvas() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const particles = [];
+    const numParticles = 100;
+    const particleSize = 1.5;
+    const particleSpeed = 0.5;
+
+    function Particle() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * particleSpeed;
+        this.vy = (Math.random() - 0.5) * particleSpeed;
+        this.color = '#00f0ff';
+        this.opacity = Math.random() * 0.5 + 0.2;
+    }
+
+    Particle.prototype.draw = function() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, particleSize, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 240, 255, ${this.opacity})`;
+        ctx.fill();
+    };
+
+    Particle.prototype.update = function() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // Bounce off walls
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+    };
+
+    function init() {
+        for (let i = 0; i < numParticles; i++) {
+            particles.push(new Particle());
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+            p.update();
+            p.draw();
+        });
+        requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+
+    const chatWindow = document.getElementById('chat-window');
+    const userInput = document.getElementById('user-input');
+    const sendBtn = document.getElementById('send-btn');
+    let chatHistory = [];
+
+    const portfolioData = `
+        About Me: I’m a detail-oriented IT graduate with a diploma in Information Technology from Damelin, backed by hands-on experience as an IT technician and intern at Lenasia South Library. I recently completed an intensive AI/ML bootcamp, where I specialized in building and deploying intelligent systems—with a strong focus on prompt engineering and large language models. I’m passionate about designing intuitive, AI-driven solutions and thrive on transforming complex challenges into elegant, functional applications. Proficient in modern frameworks, data analysis, and cloud technologies, I’m eager to contribute my technical skills and innovative mindset to a forward-thinking organization or project.
+        Core Directives:
+        - Design and deploy intelligent AI systems that address real-world challenges with practical, scalable solutions.
+        - Enhance human-AI interaction through advanced prompt engineering and intuitive model behavior.
+        - Drive innovation in AI/ML projects, contributing to meaningful outcomes across industries.
+
+        Experience:
+        - IT Intern at Lenasia South Library (01/04/2023 - 30/09/2024):
+          - Troubleshooting software and hardware problems.
+          - Assisting library patrons with computer issues.
+          - Setting up and maintaining public access to computers.
+          - Helping with the installation and updating of library management software.
+          - Tracking software licenses and ensuring compliance.
+          - Inputting and cataloging new material in a Microsoft Access database.
+          - Monitoring WIFI performance and escalating issues.
+          - Training staff or patrons on how to use digital tools.
+        - Capaciti AI Bootcamp (01/07/2025 - present):
+          - Agile Scrum Methodology: Worked in weekly sprints, managing backlogs, and delivering functional projects.
+          - Developed a no-code educational chatbot to assist users in learning AI fundamentals.
+          - Collaborated on an AI prototype tailored for the agriculture industry.
+          - Developed an AI content generator focusing on creative writing.
+          - Developed an intelligent system to create and customize ATS-friendly resumes.
+          - Applied AI & Capstone Projects: Sentiment Analysis Dashboard, Bias Audit Report, End-to-End AI Solution (AI Study Buddy).
+
+        Technical Skills and Competencies:
+        - Core AI/ML: AI & Machine Learning (PyTorch, TensorFlow, Scikit-learn, Keras, Hugging Face), Prompt Engineering (Zero-shot, few-shot, Chain-of-Thought, fine-tuning, RAG), Natural Language Processing (NLP, NLTK, spaCy, Transformers).
+        - Development & Operations: Programming Languages (Python, JavaScript, C#, Java), Cloud Platforms (AWS, Google Cloud Platform), Version Control & Tools (Git, GitHub, GitLab, Netbeans, Visual Studio, Notepad++, VS Code).
+        - Diploma in Information Technology Modules: Networks, System software, Programming (VB, Java, C#), Web development (HTML, CSS, JavaScript).
+        
+        Certifications & Badges:
+        - Artificial Intelligence (AI) Bootcamp, AI Foundation, Prompt Engineering with Chat GPT, AI for Everyone, Introduction to Artificial Intelligence, Introduction to Generative AI, AI Essentials, Python for Data Science, AI on Microsoft Azure, Building AI Powered Chatbots without Programming, Generative AI with Large Language Models, Introduction to Responsible AI, Trustworthy AI Managing Bias, Ethics and Accountability.
+
+        Projects:
+        - Smartwater SA: Objective - A smart irrigation system that uses AI to save water. Results - 45% water saving. Key Features - Mobile connectivity, Realtime smart irrigation calendar, forecast. Tags - Scalable, Weather API, Surprise, FastAPI. Ethical Analysis: The project underwent an ethical analysis using utilitarian, deontological, and virtue ethics frameworks. It addressed potential harms like the digital divide and data privacy, and it was found to be ethically robust with recommendations for enhanced accessibility and data security.
+        - Cosmic Quill: Objective - AI creative writing content generator tool. Results - 99.9% uptime, automated workflows. Key Features - multi format creation, smart audio features, Dynamic themes, AI tone adjuster. Technical Details: The project is a single-page application (SPA) using React and Tailwind CSS for the frontend, with a Supabase backend and the Gemini API for content generation. The prompt engineering methodology uses system and user prompts, few-shot prompting, and multimodal prompts for images. The architecture is modular, and API selection was based on features like multimodal capabilities and text-to-speech quality.
+        - AI Resume Builder: Objective - building ATS compliant resume with AI assistant personalize resume based on job description. Results - 100% ATS compliant resume. Key Features - build resume, career toolkit, job match and analyze resume. Technical Details: A client-side SPA with a lean stack (HTML5, vanilla JavaScript, Tailwind CSS). It uses the Gemini API for features like action verb suggestions, cover letter generation, and mock interview feedback. It includes 5 templates (Modern, Classic, Creative, Corporate, Minimalist) and offers real-time preview and ATS compliance checks. The architecture is modular and serverless, and the app uses Local Storage for user data. The UML diagram shows the user flow for account creation, resume building, and job match analysis.
+        - AI Study Buddy: Objective - Rag chatbot that is here to make studying simple. Results - 90% success rate. Key Features - flash card creator, Quiz creator, image creator, voice input notes analyzer and study plan creator. Tags - Automation.
+        - Sentiment Analysis: Objective - provide an Understanding of emotional tone in your text data instantly. Results - analysis report. Key Features - export results, text comparison, automated summary, deeper insight, thematic analysis and actionable suggestions. Technical Details: A dashboard that provides multi-class sentiment classification (positive/negative/neutral), confidence scoring, and keyword extraction. It includes features for comparative analysis, automated summary, thematic analysis, and actionable suggestions. The UML diagram shows the system architecture with a SentimentClassifier and KeywordExtractor component.
+    `;
+
+    async function sendMessage() {
+        const query = userInput.value.trim();
+        if (!query) return;
+
+        // Display user message
+        const userMessageDiv = document.createElement('div');
+        userMessageDiv.classList.add('flex', 'justify-end');
+        userMessageDiv.innerHTML = `<div class="bg-blue-600 text-white p-3 rounded-xl rounded-br-none max-w-[80%]">${query}</div>`;
+        chatWindow.appendChild(userMessageDiv);
+        userInput.value = '';
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+
+        // Display "typing" indicator
+        const typingIndicatorDiv = document.createElement('div');
+        typingIndicatorDiv.classList.add('flex', 'justify-start');
+        typingIndicatorDiv.innerHTML = `<div class="bg-gray-700 text-gray-400 p-3 rounded-xl rounded-bl-none max-w-[80%] animate-pulse">Typing...</div>`;
+        chatWindow.appendChild(typingIndicatorDiv);
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+
+        try {
+            const systemPrompt = "You are an AI assistant for Adivhaho Ndou's professional portfolio. Your role is to answer questions about Adivhaho's skills, projects, and career background. Adopt the persona of Elliot Alderson from the show Mr. Robot. You are a hacker with a cynical, direct, and slightly paranoid tone. Only use the provided context to answer questions. Do not make up information. If a question is outside the scope of the provided context, politely state that you cannot answer. The context is:\n\n" + portfolioData;
+
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [
+                    {
+                        role: "user",
+                        parts: [
+                            { text: systemPrompt },
+                            { text: "Here is our chat history to maintain context: " + JSON.stringify(chatHistory) },
+                            { text: "User's new query: " + query }
+                        ]
+                    }
+                ],
+            };
+
+            const response = await fetch(apiUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                throw new Error(`API error: ${response.status} - ${response.statusText}`);
+            }
+
+            const result = await response.json();
+            const botResponse = result?.candidates?.[0]?.content?.parts?.[0]?.text || "I'm sorry, I couldn't generate a response. Please try again.";
+
+            // Update chat history
+            chatHistory.push({ role: "user", text: query });
+            chatHistory.push({ role: "model", text: botResponse });
+
+            // Remove typing indicator and display bot response
+            chatWindow.removeChild(typingIndicatorDiv);
+            const botMessageDiv = document.createElement('div');
+            botMessageDiv.classList.add('flex', 'justify-start');
+            botMessageDiv.innerHTML = `<div class="bg-gray-700 text-gray-200 p-3 rounded-xl rounded-bl-none max-w-[80%]">${botResponse}</div>`;
+            chatWindow.appendChild(botMessageDiv);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+
+        } catch (error) {
+            console.error("Error during API call:", error);
+            if (typingIndicatorDiv) {
+                chatWindow.removeChild(typingIndicatorDiv);
+            }
+            const errorMessageDiv = document.createElement('div');
+            errorMessageDiv.classList.add('flex', 'justify-start');
+            errorMessageDiv.innerHTML = `<div class="bg-red-800 text-white p-3 rounded-xl rounded-bl-none max-w-[80%]">There was an error processing your request. Please try again.</div>`;
+            chatWindow.appendChild(errorMessageDiv);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+</script>
+</body>
+</html>
